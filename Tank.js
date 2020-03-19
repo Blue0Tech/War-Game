@@ -14,7 +14,7 @@ class Tank {
 	*/
 	constructor(x,y,isPlayer,health,lives,state) {
 		var options = {
-			isStatic : true,
+			isStatic : false,
 			collisionFilter : {
 				group : -1
 			},
@@ -24,14 +24,15 @@ class Tank {
 		this.body1 = Bodies.rectangle(x,y,this.width,this.height,options);
 		this.body = Body.create({
 			parts : [this.body1],
-			isStatic : true,
+			isStatic : false,
 		});
+		this.tankBodyPos = this.body.parts[1].position;
 		console.log(this.body);
 		World.add(world, this.body);
 	}
 	display() {
 		rectMode(CENTER);
-		rect(this.body.position.x,this.body.position.y,this.width,this.height);
+		rect(this.tankBodyPos.x,this.tankBodyPos.y,this.width,this.height);
 	}
 	frontMissile() {
 		//
@@ -39,10 +40,9 @@ class Tank {
 	backMissile() {
 		//
 	}
-	bomb() {
-		//
-	}
-	move() {
-		//
+	move(velX,velY) {
+		console.log("move called");
+		this.body.parts[1].velocity.x=velX;
+		this.body.parts[1].velocity.y=velY;
 	}
 }

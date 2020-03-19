@@ -15,11 +15,17 @@ function setup() {
     canvas = createCanvas(600,600);
     engine = Engine.create();
     world = engine.world;
-
+    engine.world.gravity.y = 0;
     playerTank = new Tank(300,300,1,60,3,1);
 }
 function draw() {
     background(0,0,0);
     playerTank.display();
     Engine.update(engine);
+}
+function keyPressed() {
+    if(keyCode===87) {
+        console.log("W pressed?");
+        playerTank.move(0,-10);
+    }
 }
