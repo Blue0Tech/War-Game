@@ -25,11 +25,20 @@ class Tank {
 		this.body = Body.create({
 			parts : [this.body1],
 			isStatic : false,
+			collisionFilter : {
+				group : -1
+			}
 		});
 		this.tankBodyPos = this.body.parts[1].position;
-		console.log(this.body);
 		World.add(world, this.body);
 	}
+	/*
+	# Desc: display(): a function to display an object on the canvas
+	# return value: none
+	# arguements: none
+	# created date: 16 Mar 2020
+	# created by: Pruthvi Shrikaanth
+	*/
 	display() {
 		rectMode(CENTER);
 		rect(this.tankBodyPos.x,this.tankBodyPos.y,this.width,this.height);
@@ -40,9 +49,17 @@ class Tank {
 	backMissile() {
 		//
 	}
+	/*
+	# Desc: move(): a function to move an object
+	# return value: none
+	# arguements:
+		# velX: specify the velocity of the object in the x-direction
+		# velY: specify the velocity of the object in the y-direction
+	# created date: 19 Mar 2020
+	# created by: Pruthvi Shrikaanth
+	*/
 	move(velX,velY) {
-		console.log("move called");
-		this.body.parts[1].velocity.x=velX;
-		this.body.parts[1].velocity.y=velY;
+		this.body.force.x=velX;
+		this.body.force.y=velY;
 	}
 }

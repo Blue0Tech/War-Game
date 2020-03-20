@@ -25,7 +25,15 @@ function draw() {
 }
 function keyPressed() {
     if(keyCode===87) {
-        console.log("W pressed?");
-        playerTank.move(0,-10);
+        playerTank.move(0,-0.03);
+    }
+    if(keyCode===83) {
+        playerTank.move(0,0.03);
+    }
+    if(keyCode===65) {
+        playerTank.move(-0.03,0);
+    }
+    if(keyCode===68) {
+        playerTank.move(0.03,0);
     }
 }

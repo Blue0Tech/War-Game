@@ -25,6 +25,9 @@ class Plane {
 		this.body = Body.create({
 			parts : [this.body1],
 			isStatic : true,
+			collisionFilter : {
+				group : -1
+			}
 		});
 		this.planeBodyPos = this.body.parts[1].position;
 		console.log(this.body);
@@ -43,8 +46,8 @@ class Plane {
 	bomb() {
 		//
 	}
-	move() {
-		this.planeBodyPos.x+=x;
-		this.planeBodyPos.y+=y;
+	move(velX,velY) {
+		this.body.force.x=velX;
+		this.body.force.y=velY;
 	}
 }
