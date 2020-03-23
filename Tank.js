@@ -21,6 +21,12 @@ class Tank {
 		}
 		this.width = 40;
 		this.height = 60;
+
+		this.i = 0;
+        // this.initialFrames = frameCount;
+        // console.log(this.initialFrames);
+        // this.currentFrames = 0;
+
 		this.bombDropped = 0;
 		this.body1 = Bodies.rectangle(x,y,this.width,this.height,options);
 		this.body = Body.create({
@@ -32,6 +38,7 @@ class Tank {
 		});
 		this.tankBodyPos = this.body.parts[1].position;
 		World.add(world, this.body);
+		this.bombProcessor();
 	}
 	/*
 	# Desc: display(): a function to display an object on the canvas
@@ -66,8 +73,22 @@ class Tank {
 		this.body.force.x=velX;
 		this.body.force.y=velY;
 	}
-	bomb() {
-		this.bomb = new Bomb(this.tankBodyPos.x,this.tankBodyPos.y,1);
+	dropBomb() {
+		this.bomb = new Bomb(this.tankBodyPos.x,this.tankBodyPos.y,1); //problematic line
 		this.bombDropped = 1;
+		console.log("bomb() executed");
+        // use framecount to count 2 seconds
+        // if the bomb is touching an entity on the opposing side
+            // explode and damage the entiy on the opposing side
+            // destroy the bomb
+        // else
+        // destroy the bomb
+	}
+	bombProcessor() {
+		if(this.i == 0) {
+            this.initialFrames = frameCount;
+            this.i = 1;
+		}
+		this.currentFrames = frameCount;
 	}
 }

@@ -36,6 +36,8 @@ function keyPressed() {
         playerTank.move(0.03,0);
     }
     if(keyCode===88) {
-        playerTank.bomb();
+        if(playerTank.bombDropped == 0) {
+            playerTank.dropBomb();
+        }
     }
 }
