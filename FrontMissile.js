@@ -31,6 +31,7 @@ class FrontMissile {
 			}
         });
         World.add(world, this.body);
+        this.body.force.y = velY;
     }
     display() {
         rect(this.body.parts[1].position.x,this.body.parts[1].position.y,this.width,this.height);

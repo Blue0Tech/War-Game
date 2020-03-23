@@ -16,6 +16,10 @@ class Bomb {
                 group : -1
 			},
         }
+        // this.i = 0;
+        this.initialFrames = frameCount;
+        console.log(this.initialFrames);
+        // this.currentFrames = 0;
         this.radius = 20;
         this.body1 = Bodies.circle(x,y,this.radius,options);
         this.body = Body.create({
@@ -29,5 +33,18 @@ class Bomb {
     }
     display() {
         circle(this.body.parts[1].position.x,this.body.parts[1].position.y,this.radius);
+    }
+    explode() {
+        // if(this.i == 0) {
+        //     this.initialFrames = World.frameCount;
+        //     this.i = 1;
+        // }
+        // console.log(this.initialFrames);
+        // use framecount to count 2 seconds
+        // if the bomb is touching an entity on the opposing side
+            // explode and damage the entiy on the opposing side
+            // destroy the bomb
+        // else
+        // destroy the bomb
     }
 }

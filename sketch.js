@@ -7,7 +7,6 @@ var engine, world;
 
 var canvas;
 var playerTank;
-
 function preload() {
     //
 }
@@ -35,5 +34,8 @@ function keyPressed() {
     }
     if(keyCode===68) {
         playerTank.move(0.03,0);
+    }
+    if(keyCode===88) {
+        playerTank.bomb();
     }
 }

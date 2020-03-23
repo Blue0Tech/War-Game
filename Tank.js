@@ -21,6 +21,7 @@ class Tank {
 		}
 		this.width = 40;
 		this.height = 60;
+		this.bombDropped = 0;
 		this.body1 = Bodies.rectangle(x,y,this.width,this.height,options);
 		this.body = Body.create({
 			parts : [this.body1],
@@ -42,6 +43,9 @@ class Tank {
 	display() {
 		rectMode(CENTER);
 		rect(this.tankBodyPos.x,this.tankBodyPos.y,this.width,this.height);
+		if(this.bombDropped==1) {
+			this.bomb.display();
+		}
 	}
 	frontMissile() {
 		//
@@ -61,5 +65,9 @@ class Tank {
 	move(velX,velY) {
 		this.body.force.x=velX;
 		this.body.force.y=velY;
+	}
+	bomb() {
+		this.bomb = new Bomb(this.tankBodyPos.x,this.tankBodyPos.y,1);
+		this.bombDropped = 1;
 	}
 }
